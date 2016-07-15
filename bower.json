@@ -1,0 +1,26 @@
+{
+  "name": "frontplate",
+  "description": "a frontend boilerplate with gulp",
+  "main": "index.js",
+  "authors": [
+    "Dan Nguyen <dkbnguyen@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "fontend",
+    "boilerplate",
+    "gulp",
+    "development"
+  ],
+  "homepage": "https://github.com/dkbnguyen/frontplate",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.2"
+  }
+}
