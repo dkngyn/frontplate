@@ -17,7 +17,7 @@ var del = require('del');
 
 // lint task
 gulp.task('lint', function() {
-	gulp.src('src/js/scripts.js').pipe(jshint()).pipe(jshint.reporter('default'));
+	gulp.src('src/js/*.js').pipe(jshint()).pipe(jshint.reporter('default'));
 });
 
 // scripts task
@@ -91,6 +91,11 @@ gulp.task('watch', function() {
 	gulp.watch('src/sass/*.scss', ['styles']);
 	gulp.watch('src/images/**/*', ['images']);
 	gulp.watch('src/**/*.html', ['html']);
+});
+
+// clean up
+gulp.task('clean', function() {
+	del(['dist', 'tmp']);
 });
 
 // default task
