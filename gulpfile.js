@@ -16,11 +16,11 @@ var jshint = require('gulp-jshint');
 var sass = require('gulp-ruby-sass');
 var cleanCSS = require('gulp-clean-css');
 
-// templates
-var nunjucksRender = require('gulp-nunjucks-render');
-
 // images
 var imageMin = require('gulp-imagemin');
+
+// pages & templates
+var nunjucksRender = require('gulp-nunjucks-render');
 
 // utils
 var plumber = require('gulp-plumber');
