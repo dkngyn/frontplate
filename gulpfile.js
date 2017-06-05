@@ -71,7 +71,7 @@ gulp.task('styles', function() {
 	.on('error', sass.logError)
 	.pipe(rename('app.css'))
 	.pipe(cleanCSS({compatibility: 'ie8'}))
-	.pipe(gulp.dest('dist/assets'))
+	.pipe(gulp.dest('dist/assets/'))
 	.pipe(reload({stream: true}));
 });
 
@@ -79,7 +79,7 @@ gulp.task('styles', function() {
 gulp.task('images', function() {
 	gulp.src('src/images/**/*')
 	.pipe(imageMin())
-	.pipe(gulp.dest('dist/images'))
+	.pipe(gulp.dest('dist/images/'))
 	.pipe(reload({stream: true}));
 });
 
@@ -87,9 +87,9 @@ gulp.task('images', function() {
 gulp.task('pages', function() {
 	gulp.src('src/pages/*.html')
 	.pipe(nunjucksRender({
-		path:['src/templates']
+		path:['src/templates/']
 	}))
-	.pipe(gulp.dest('dist'))
+	.pipe(gulp.dest('dist/'))
 	.pipe(reload({stream: true}));
 });
 
@@ -117,7 +117,7 @@ gulp.task('watch', function() {
 
 // clean up
 gulp.task('clean', function() {
-	del(['dist', 'tmp']);
+	del(['dist/', 'tmp/']);
 });
 
 // default task
