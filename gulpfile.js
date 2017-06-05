@@ -56,18 +56,18 @@ gulp.task('scripts', function() {
 
 // styles task
 gulp.task('styles', function() {
-	sass('src/sass/framework.scss')
+	sass('src/sass/framework.scss', {loadPath: ['node_modules/bootstrap/scss']})
 	.on('error', sass.logError)
 	.pipe(rename('framework.css'))
 	.pipe(cleanCSS({compatibility: 'ie8'}))
-	.pipe(gulp.dest('dist/css'))
+	.pipe(gulp.dest('dist/assets/'))
 	.pipe(reload({stream: true}));
 
 	sass('src/sass/styles.scss')
 	.on('error', sass.logError)
-	.pipe(rename('styles.css'))
+	.pipe(rename('app.css'))
 	.pipe(cleanCSS({compatibility: 'ie8'}))
-	.pipe(gulp.dest('dist/css'))
+	.pipe(gulp.dest('dist/assets'))
 	.pipe(reload({stream: true}));
 });
 
@@ -80,7 +80,7 @@ gulp.task('images', function() {
 });
 
 // html task
-gulp.task('html', function() {
+gulp.task('pages', function() {
 	gulp.src('src/pages/*.html')
 	.pipe(nunjucksRender({
 		path:['src/templates']
@@ -91,12 +91,12 @@ gulp.task('html', function() {
 
 // build dist
 gulp.task('build', function(cb) {
-	runSequence(['styles', 'scripts', 'images', 'html'], cb);
+	runSequence(['styles', 'scripts', 'images', 'pages'], cb);
 });
 
 // server the distribution
 gulp.task('serve', function() {
-	browserSync({
+	browserSync.init(null, {
 		server: {
 			baseDir: "dist/"
 		}
@@ -105,10 +105,10 @@ gulp.task('serve', function() {
 
 // watch task
 gulp.task('watch', function() {
-	gulp.watch('src/js/*.js', ['scripts']);
+	gulp.watch('src/ts/*.ts', ['scripts']);
 	gulp.watch('src/sass/*.scss', ['styles']);
 	gulp.watch('src/images/**/*', ['images']);
-	gulp.watch('src/**/*.html', ['html']);
+	gulp.watch('src/**/*.html', ['pages']);
 });
 
 // clean up
@@ -117,4 +117,4 @@ gulp.task('clean', function() {
 });
 
 // default task
-gulp.task('default', ['lint', 'scripts', 'styles', 'images', 'html', 'serve' ,'watch']);
+gulp.task('default', ['lint', 'scripts', 'styles', 'images', 'pages', 'serve' ,'watch']);
