@@ -1,56 +1,74 @@
+// build core
 var gulp = require('gulp');
-
-var jshint = require('gulp-jshint');
-var plumber = require('gulp-plumber');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var uglifyJS = require('gulp-uglify');
-var cleanCSS = require('gulp-clean-css');
-var imageMin = require('gulp-imagemin');
-
-var sass = require('gulp-ruby-sass');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
-var runSequence = require('run-sequence');
+
+// scripts
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var tsify = require("tsify");
+var buffer = require('vinyl-buffer');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var jshint = require('gulp-jshint');
+
+// styles
+var sass = require('gulp-ruby-sass');
+var cleanCSS = require('gulp-clean-css');
+
+// templates
 var nunjucksRender = require('gulp-nunjucks-render');
+
+// images
+var imageMin = require('gulp-imagemin');
+
+// utils
+var plumber = require('gulp-plumber');
+var rename = require('gulp-rename');
+var runSequence = require('run-sequence');
 var del = require('del');
+
 
 // lint task
 gulp.task('lint', function() {
-	gulp.src('src/js/*.js').pipe(jshint()).pipe(jshint.reporter('default'));
+	gulp.src('src/ts/*.ts').pipe(jshint()).pipe(jshint.reporter('default'));
 });
 
 // scripts task
 gulp.task('scripts', function() {
-	gulp.src(['bower_components/jquery/dist/jquery.js','bower_components/bootstrap/dist/js/bootstrap.js'])
-		.pipe(concat('framework.js'))
-		.pipe(rename('framework.js'))
-		.pipe(uglifyJS())
-		.pipe(gulp.dest('dist/js'));
+	gulp.src(['node_modules/jquery/dist/jquery.js',
+	'node_modules/bootstrap/js/dist/util.js'])
+	.pipe(concat('framework.js'))
+	.pipe(rename('framework.js'))
+	.pipe(uglify())
+	.pipe(gulp.dest('dist/assets/'));
 
-	gulp.src('src/js/*.js')
-		.pipe(plumber())
-		.pipe(rename('app.js'))
-		.pipe(uglifyJS())
-		.pipe(gulp.dest('dist/js'))
-		.pipe(reload({stream: true}));
+	browserify({basedir: './', debug: true})
+	.add('src/ts/scripts.ts')
+	.plugin(tsify, {noImplicitAny: true, target: 'es5', "types": ["node"], "typeRoots": ["node_modules/@types"]})
+	.bundle()
+	.on('error', function(error) {console.error(error.toString());})
+	.pipe(source('app.js'))
+	.pipe(buffer())
+	.pipe(uglify())
+	.pipe(gulp.dest('dist/assets/'));
 });
 
 // styles task
 gulp.task('styles', function() {
 	sass('src/sass/framework.scss')
-		.on('error', sass.logError)
-		.pipe(rename('framework.css'))
-		.pipe(cleanCSS({compatibility: 'ie8'}))
-		.pipe(gulp.dest('dist/css'))
-		.pipe(reload({stream: true}));
+	.on('error', sass.logError)
+	.pipe(rename('framework.css'))
+	.pipe(cleanCSS({compatibility: 'ie8'}))
+	.pipe(gulp.dest('dist/css'))
+	.pipe(reload({stream: true}));
 
 	sass('src/sass/styles.scss')
-		.on('error', sass.logError)
-		.pipe(rename('styles.css'))
-		.pipe(cleanCSS({compatibility: 'ie8'}))
-		.pipe(gulp.dest('dist/css'))
-		.pipe(reload({stream: true}));
+	.on('error', sass.logError)
+	.pipe(rename('styles.css'))
+	.pipe(cleanCSS({compatibility: 'ie8'}))
+	.pipe(gulp.dest('dist/css'))
+	.pipe(reload({stream: true}));
 });
 
 // images task
@@ -64,11 +82,11 @@ gulp.task('images', function() {
 // html task
 gulp.task('html', function() {
 	gulp.src('src/pages/*.html')
-		.pipe(nunjucksRender({
-			path:['src/templates']
-		}))
-		.pipe(gulp.dest('dist'))
-		.pipe(reload({stream: true}));
+	.pipe(nunjucksRender({
+		path:['src/templates']
+	}))
+	.pipe(gulp.dest('dist'))
+	.pipe(reload({stream: true}));
 });
 
 // build dist
