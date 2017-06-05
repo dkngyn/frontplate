@@ -10,7 +10,7 @@ var tsify = require("tsify");
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-var jshint = require('gulp-jshint');
+var tslint = require('gulp-tslint');
 
 // styles
 var sass = require('gulp-ruby-sass');
@@ -31,7 +31,11 @@ var del = require('del');
 
 // lint task
 gulp.task('lint', function() {
-	gulp.src('src/ts/*.ts').pipe(jshint()).pipe(jshint.reporter('default'));
+	gulp.src('src/ts/*.ts')
+	.pipe(tslint({
+		formatter: "prose"
+	}))
+	.pipe(tslint.report());
 });
 
 // scripts task
