@@ -14,6 +14,7 @@ var tslint = require('gulp-tslint');
 
 // styles
 var sass = require('gulp-ruby-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var cleanCSS = require('gulp-clean-css');
 
 // images
@@ -23,10 +24,24 @@ var imageMin = require('gulp-imagemin');
 var nunjucksRender = require('gulp-nunjucks-render');
 
 // utils
-var plumber = require('gulp-plumber');
-var rename = require('gulp-rename');
-var runSequence = require('run-sequence');
 var del = require('del');
+var gulpif = require('gulp-if');
+var minimist = require('minimist');
+var rename = require('gulp-rename');
+var plumber = require('gulp-plumber');
+var runSequence = require('run-sequence');
+
+// environments and options
+var environments = {
+	dev: 'development',
+	pro: 'production'
+}
+var defaultOptions = {
+	string: 'env',
+	default: { env: process.env.NODE_ENV || environments.dev }
+}
+var options = minimist(process.argv.slice(2), defaultOptions);
+
 
 
 // lint task
@@ -44,7 +59,7 @@ gulp.task('scripts', function() {
 	'node_modules/bootstrap/js/dist/util.js'])
 	.pipe(concat('framework.js'))
 	.pipe(rename('framework.js'))
-	.pipe(uglify())
+	.pipe(gulpif(options.env == environments.pro, uglify()))
 	.pipe(gulp.dest('dist/assets/'));
 
 	browserify({basedir: './', debug: true})
@@ -54,23 +69,25 @@ gulp.task('scripts', function() {
 	.on('error', function(error) {console.error(error.toString());})
 	.pipe(source('app.js'))
 	.pipe(buffer())
-	.pipe(uglify())
+	.pipe(gulpif(options.env == environments.pro, uglify()))
 	.pipe(gulp.dest('dist/assets/'));
 });
 
 // styles task
 gulp.task('styles', function() {
-	sass('src/sass/framework.scss', {loadPath: ['node_modules/bootstrap/scss']})
+	sass('src/sass/framework.scss', {sourcemap: true, loadPath: ['node_modules/bootstrap/scss']})
 	.on('error', sass.logError)
+	.pipe(sourcemaps.write())
 	.pipe(rename('framework.css'))
-	.pipe(cleanCSS({compatibility: 'ie8'}))
+	.pipe(gulpif(options.env == environments.pro, cleanCSS({compatibility: 'ie8'})))
 	.pipe(gulp.dest('dist/assets/'))
 	.pipe(reload({stream: true}));
 
-	sass('src/sass/styles.scss')
+	sass('src/sass/styles.scss', {sourcemap: true})
 	.on('error', sass.logError)
+	.pipe(sourcemaps.write())
 	.pipe(rename('app.css'))
-	.pipe(cleanCSS({compatibility: 'ie8'}))
+	.pipe(gulpif(options.env == environments.pro, cleanCSS({compatibility: 'ie8'})))
 	.pipe(gulp.dest('dist/assets/'))
 	.pipe(reload({stream: true}));
 });
