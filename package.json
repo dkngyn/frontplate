@@ -1,6 +1,6 @@
 {
   "name": "frontplate",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a frontend boilerplate with gulp",
   "main": "index.js",
   "scripts": {
