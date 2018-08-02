@@ -1,17 +1,17 @@
 header {
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: $header-bg;
-  box-shadow: 0px 1px 1px $header-shadow;
-  .header__brand {
-    float: left;
-    display: block;
+  background-color: $white;
+  box-shadow: 0px 1px 1px $gray-200;
+  .header-brand {
+    display: inline-block;
+    &:hover {
+      text-decoration: none;
+    }
   }
-  .header__meta {
-    float: left;
-    display: block;
-    line-height: 40px;
-    margin-left: 10px;
-    font-size: 1.25rem;
+  .header-meta {
+    margin-left: .25rem;
+    color: theme-color("primary");
+    font-size: $font-size-lg;
   }
 }
