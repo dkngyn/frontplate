@@ -82,7 +82,7 @@ var scripts = gulp.series(scriptFramework,scriptApp);
 function scriptFramework() {
 	return gulp.src([
 		'node_modules/jquery/dist/jquery.js',
-		'node_modules/popper.js/dist/popper.js',
+		'node_modules/popper.js/dist/umd/popper.js',
 		'node_modules/bootstrap/js/dist/util.js'])
 	.pipe(concat('framework.js'))
 	.pipe(gulpif(options.env == environments.pro, uglify()))
