@@ -106,9 +106,9 @@ function scriptApp() {
 }
 
 // styles task
-var styles = gulp.series(styleFramework,styleApp);
+var styles = styleAll;
 
-function styleFramework() {
+function styleAll() {
 	return sass(paths.styles.framework, {sourcemap: true, loadPath: ['node_modules/bootstrap/scss']})
 	.on('error', sass.logError)
 	.pipe(sourcemaps.write())
@@ -117,20 +117,6 @@ function styleFramework() {
 		cascade: false
 	}))
 	.pipe(rename('framework.css'))
-	.pipe(gulpif(options.env == environments.pro, cleanCSS({compatibility: 'ie8'})))
-	.pipe(gulp.dest(paths.dest.assets))
-	.pipe(reload({stream: true}));
-}
-
-function styleApp() {
-	return sass(paths.styles.app, {sourcemap: true, loadPath: ['node_modules/bootstrap/scss']})
-	.on('error', sass.logError)
-	.pipe(sourcemaps.write())
-	.pipe(autoprefixer({
-		browsers: ['last 2 versions'],
-		cascade: false
-	}))
-	.pipe(rename('app.css'))
 	.pipe(gulpif(options.env == environments.pro, cleanCSS({compatibility: 'ie8'})))
 	.pipe(gulp.dest(paths.dest.assets))
 	.pipe(reload({stream: true}));
