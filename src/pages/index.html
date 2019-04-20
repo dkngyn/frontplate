@@ -3,7 +3,20 @@
 {% block content %}
 <main>
 	<div class="container">
-		<p>Hello world! This is frontplate.</p>
+		<div class="login card js-login">
+			<div class="card-header">Login</div>
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+						<input class="form-control" name="email" type="email" placeholder="Enter email address" />
+					</div>
+					<div class="form-group">
+						<input class="form-control" name="password" type="password" placeholder="Enter password" />
+					</div>
+					<button class="btn btn-primary btn-block" type="submit" >Login</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </main>
 {% endblock %}
