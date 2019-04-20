@@ -2,20 +2,18 @@
 {% set title = 'login' %}
 {% block content %}
 <main>
-	<div class="container">
-		<div class="login card js-login">
-			<div class="card-header">Login</div>
-			<div class="card-body">
-				<form>
-					<div class="form-group">
-						<input class="form-control" name="email" type="email" placeholder="Enter email address" />
-					</div>
-					<div class="form-group">
-						<input class="form-control" name="password" type="password" placeholder="Enter password" />
-					</div>
-					<button class="btn btn-primary btn-block" type="submit" >Login</button>
-				</form>
-			</div>
+	<div class="container narrow">
+		<div class="login js-login">
+			<h4 class="text-center">Login</h4>
+			<form class="card card-body">
+				<div class="form-group">
+					<input class="form-control" name="email" type="email" placeholder="Enter email address" />
+				</div>
+				<div class="form-group">
+					<input class="form-control" name="password" type="password" placeholder="Enter password" />
+				</div>
+				<button class="btn btn-primary btn-block" type="submit" >Login</button>
+			</form>
 		</div>
 	</div>
 </main>
