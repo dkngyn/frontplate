@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% set title = 'customer' %}
+{% block content %}
+<main>
+	<div class="container narrow">
+		<div class="card mb-4">
+			<div class="card-body">
+				<h5 class="card-title">customerName</h5>
+				<div class="form-group">
+					<label>Contact</label>
+					<div>contactFirstName contactLastName</div>
+				</div>
+				<div class="form-group">
+					<label>Phone</label>
+					<div>phone</div>
+				</div>
+				<div class="form-group">
+					<label>Address</label>
+					<div>addressLine1</div>
+					<div>addressLine2</div>
+					<div>city</div>
+					<div>state</div>
+					<div>postalCode</div>
+					<div>country</div>
+				</div>
+				<div class="form-group">
+					<label>Sales Representative Employee Number</label>
+					<div>salesRepEmployeeNumber</div>
+				</div>
+				<div class="form-group">
+					<label>credit limit</label>
+					<div>creditLimit</div>
+				</div>
+			</div>
+		</div>
+		<h5 class="mb-0">Customer's orders</h5>
+		<p class="text-muted">3 orders</p>
+		<div class="card mb-3">
+			<div class="card-body row mx-0 justify-content-between">
+				<ul class="nav px-0 flex-column">
+					<li class="nav-item">
+						<label>Order #1100231</label>
+						<p><a href="#">order details</a></p>
+					</li>
+					<li class="nav-item">
+						<label>Order placed</label>
+						<p>2003-July-13</p>
+					</li>
+					<li class="nav-item">
+						<label>Status</label>
+						<p>shipped</p>
+					</li>
+				</ul>
+				<div class="px-0">
+					<p><small>S18_1589</small> 1965 Aston Martin DB5</p>
+					<p><small>S18_2870</small> 1999 Indy 500 Monte Carlo SS</p>
+					<p><small>S18_3685</small> 1948 Porsche Type 356 Roadster</p>
+					<p><small>S24_1628</small> 1966 Shelby Cobra 427 S/C</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock %}

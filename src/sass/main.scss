@@ -1,6 +1,6 @@
 main {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 }
 
 .container {
@@ -15,5 +15,14 @@ main {
 	margin-right: auto;
 	.card-body {
 		padding: 2rem;
+	}
+}
+
+.card {
+	label {
+		color: $gray-600;
+		margin-bottom: 0;
+		font-size: $font-size-xs;
+		text-transform: uppercase;
 	}
 }
