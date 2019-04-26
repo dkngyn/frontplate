@@ -1,6 +1,13 @@
-main {
+header {
 	padding-top: 3rem;
-	padding-bottom: 3rem;
+	nav {
+		background-color: #e1e4e8;
+		border-radius: $border-radius;
+	}
+}
+main {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 
 .container {
@@ -14,7 +21,7 @@ main {
 	margin-left: auto;
 	margin-right: auto;
 	.card-body {
-		padding: 2rem;
+		padding: 1.5rem;
 	}
 }
 
