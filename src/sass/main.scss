@@ -1,18 +1,21 @@
 header {
-	padding-top: 3rem;
+	padding-top: 2rem;
 	nav {
-		background-color: #e1e4e8;
+		background-color: $gray-200;
 		border-radius: $border-radius;
+		.username {
+			border-right: 1px solid $gray-300;
+		}
 	}
 }
 main {
-	padding-top: 2rem;
-	padding-bottom: 2rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 }
 
 .container {
 	&.narrow {
-		max-width: 720px;
+		max-width: 780px;
 	}
 }
 

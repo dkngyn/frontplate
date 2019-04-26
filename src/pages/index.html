@@ -3,12 +3,39 @@
 {% block content %}
 <main>
 	<div class="container narrow">
-		<h4>Customers</h4>
-		<div class="card">
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item"><a href="#">Dapibus ac facilisis in</a></li>
-			</ul>
+		<div class="row mb-3">
+			<h4 class="col-sm-4 mb-0">Customers</h4>
+			<form class="col-sm-4 offset-sm-4">
+				<select class="form-control">
+					<option>Filter customers</option>
+					<option>Orders</option>
+					<option>Credit limit</option>
+					<option>Location</option>
+				</select>
+			</form>
 		</div>
+
+		<div class="table-responsive-md">
+			<table class="table table-bordered">
+				<thead class="thead-light">
+					<tr>
+						<th>Name</th>
+						<th>Orders</th>
+						<th>Credit limit</th>
+						<th>Location</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>Atelier graphique</th>
+						<td>3</td>
+						<td>117300.00</td>
+						<td>Philadelphia, USA</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
 	</div>
 </main>
 {% endblock %}
