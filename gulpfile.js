@@ -81,9 +81,8 @@ var scripts = gulp.series(scriptFramework,scriptApp);
 
 function scriptFramework() {
 	return gulp.src([
-		'node_modules/jquery/dist/jquery.js',
-		'node_modules/popper.js/dist/umd/popper.js',
-		'node_modules/bootstrap/js/dist/util.js'])
+		'node_modules/@popperjs/core/dist/umd/popper.js',
+		'node_modules/bootstrap/dist/js/bootstrap.js'])
 	.pipe(concat('framework.js'))
 	.pipe(gulpif(options.env == environments.pro, uglify()))
 	.pipe(gulp.dest('dist/assets/'));
@@ -112,7 +111,6 @@ function styleFramework() {
 	.on('error', sass.logError)
 	.pipe(sourcemaps.write())
 	.pipe(autoprefixer({
-		browsers: ['last 2 versions'],
 		cascade: false
 	}))
 	.pipe(rename('framework.css'))
@@ -126,7 +124,6 @@ function styleApp() {
 	.on('error', sass.logError)
 	.pipe(sourcemaps.write())
 	.pipe(autoprefixer({
-		browsers: ['last 2 versions'],
 		cascade: false
 	}))
 	.pipe(rename('app.css'))

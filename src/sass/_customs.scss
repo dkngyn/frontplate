@@ -2,7 +2,7 @@
 // Color system
 //
 
-$white:    #fff;
+$white: #fff;
 $gray-100: #f5f5f5;
 $gray-200: #eeeeee;
 $gray-300: #e0e0e0;
@@ -12,104 +12,87 @@ $gray-600: #757575;
 $gray-700: #616161;
 $gray-800: #424242;
 $gray-900: #212121;
-$black:    #000;
+$black: #000;
 
-$grays: ();
-$grays: map-merge(
-  (
-    "100": $gray-100,
-    "200": $gray-200,
-    "300": $gray-300,
-    "400": $gray-400,
-    "500": $gray-500,
-    "600": $gray-600,
-    "700": $gray-700,
-    "800": $gray-800,
-    "900": $gray-900
-    ),
-  $grays
-  );
+$grays: (
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900,
+);
 
-$blue:    #2196f3;
-$indigo:  #3f51b5;
-$purple:  #9c27b0;
-$pink:    #e91e63;
-$red:     #f44336;
-$orange:  #ff9800;
-$yellow:  #ffeb3b;
-$green:   #4caf50;
-$teal:    #009688;
-$cyan:    #00bcd4;
+$blue: #2196f3;
+$indigo: #3f51b5;
+$purple: #9c27b0;
+$pink: #e91e63;
+$red: #f44336;
+$orange: #ff9800;
+$yellow: #ffeb3b;
+$green: #4caf50;
+$teal: #009688;
+$cyan: #00bcd4;
 
-$colors: ();
-$colors: map-merge(
-  (
-    "blue":       $blue,
-    "indigo":     $indigo,
-    "purple":     $purple,
-    "pink":       $pink,
-    "red":        $red,
-    "orange":     $orange,
-    "yellow":     $yellow,
-    "green":      $green,
-    "teal":       $teal,
-    "cyan":       $cyan,
-    "white":      $white,
-    "gray":       $gray-600,
-    "gray-dark":  $gray-800
-    ),
-  $colors
-  );
+$colors: (
+  "blue": $blue,
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+  "white": $white,
+  "gray": $gray-600,
+  "gray-dark": $gray-800,
+);
 
-$primary:       $blue;
-$secondary:     $gray-600;
-$success:       $green;
-$info:          $cyan;
-$warning:       $yellow;
-$danger:        $red;
-$light:         $gray-100;
-$dark:          $gray-800;
+$primary: $blue;
+$secondary: $gray-600;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-100;
+$dark: $gray-800;
 
-$theme-colors: ();
-$theme-colors: map-merge(
-  (
-    "primary":    $primary,
-    "secondary":  $secondary,
-    "success":    $success,
-    "info":       $info,
-    "warning":    $warning,
-    "danger":     $danger,
-    "light":      $light,
-    "dark":       $dark
-    ),
-  $theme-colors
-  );
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
 
 // Set a specific jump point for requesting color jumps
-$theme-color-interval:      8%;
+$theme-color-interval: 8%;
 
 // The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold:  150;
+$yiq-contrasted-threshold: 150;
 
 // Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:             $gray-900;
-$yiq-text-light:            $white;
-
-
+$yiq-text-dark: $gray-900;
+$yiq-text-light: $white;
 
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
-$enable-caret:              true;
-$enable-rounded:            true;
-$enable-shadows:            false;
-$enable-gradients:          false;
-$enable-transitions:        true;
-$enable-grid-classes:       true;
-$enable-print-styles:       true;
-
-
+$enable-caret: true;
+$enable-rounded: true;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-transitions: true;
+$enable-grid-classes: true;
 
 // Spacing
 //
@@ -118,63 +101,36 @@ $enable-print-styles:       true;
 // You can add more entries to the $spacers map, should you need more variation.
 
 $spacer: 1rem;
-$spacers: ();
-// stylelint-disable-next-line scss/dollar-variable-default
-$spacers: map-merge(
-  (
-    0: 0,
-    1: ($spacer * .25),
-    2: ($spacer * .5),
-    3: $spacer,
-    4: ($spacer * 1.5),
-    5: ($spacer * 3)
-    ),
-  $spacers
-  );
-
-// This variable affects the `.h-*` and `.w-*` classes.
-$sizes: ();
-// stylelint-disable-next-line scss/dollar-variable-default
-$sizes: map-merge(
-  (
-    25: 25%,
-    50: 50%,
-    75: 75%,
-    100: 100%,
-    auto: auto
-    ),
-  $sizes
-  );
-
-
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
 
 // Body
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white;
-$body-color:                $gray-900;
-
-
+$body-bg: $white;
+$body-color: $gray-900;
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                theme-color("primary");
-$link-decoration:           none;
-$link-hover-color:          darken($link-color, 15%);
-$link-hover-decoration:     underline;
-
-
+$link-color: $primary;
+$link-decoration: none;
+$link-hover-color: shift-color($link-color, $link-shade-percentage);
+$link-hover-decoration: underline;
 
 // Paragraphs
 //
 // Style p element.
 
-$paragraph-margin-bottom:   1rem;
-
-
+$paragraph-margin-bottom: 1rem;
 
 // Grid breakpoints
 //
@@ -186,9 +142,8 @@ $grid-breakpoints: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1024px
-  );
-
+  xl: 1024px,
+);
 
 // Grid containers
 //
@@ -198,43 +153,41 @@ $container-max-widths: (
   sm: 100%,
   md: 100%,
   lg: 960px,
-  xl: 1024px
-  );
-
-
+  xl: 1024px,
+);
 
 // Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  'Open Sans', sans-serif;
-$font-family-serif:       'Noto Serif', serif;
-$font-family-monospace:   'Roboto Mono', monospace;
-$font-family-base:        $font-family-sans-serif;
+$font-family-sans-serif: "Open Sans", sans-serif;
+$font-family-serif: "Noto Serif", serif;
+$font-family-monospace: "Roboto Mono", monospace;
+$font-family-base: $font-family-sans-serif;
 
-$font-size-base:          1rem;
-$font-size-lg:            ($font-size-base * 1.25);
-$font-size-sm:            ($font-size-base * .875);
-$font-size-xs:            ($font-size-base * .75);
+$font-size-base: 1rem;
+$font-size-lg: ($font-size-base * 1.25);
+$font-size-sm: ($font-size-base * 0.875);
+$font-size-xs: ($font-size-base * 0.75);
 
-$font-weight-light:       300;
-$font-weight-normal:      400;
-$font-weight-bold:        600;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 600;
 
-$font-weight-base:        $font-weight-normal;
-$line-height-base:        1.5;
+$font-weight-base: $font-weight-normal;
+$line-height-base: 1.5;
 
-$h1-font-size:            $font-size-base * 2.5;
-$h2-font-size:            $font-size-base * 2;
-$h3-font-size:            $font-size-base * 1.75;
-$h4-font-size:            $font-size-base * 1.5;
-$h5-font-size:            $font-size-base * 1.25;
-$h6-font-size:            $font-size-base;
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
 
-$headings-margin-bottom:      $spacer;
-$headings-font-family:        inherit;
-$headings-font-weight:        $font-weight-bold;
-$headings-line-height:        $line-height-base;
-$headings-color:              inherit;
+$headings-margin-bottom: $spacer;
+$headings-font-family: inherit;
+$headings-font-weight: $font-weight-bold;
+$headings-line-height: $line-height-base;
+$headings-color: inherit;
 
-$text-muted:                  $gray-600;
+$text-muted: $gray-600;
