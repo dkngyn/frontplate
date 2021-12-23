@@ -93,9 +93,8 @@ function scriptApp() {
 	return browserify({basedir: './', debug: true})
 	.add(paths.scripts.app)
 	.plugin(tsify, {
-		noImplicitAny: true, target: 'es5',
-		"types": ["node"],
-		"typeRoots": ["node_modules/@types"]
+		noImplicitAny: true,
+		target: 'es5',
 	})
 	.bundle()
 	.on('error', function(error) {console.error(error.toString());})

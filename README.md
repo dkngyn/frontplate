@@ -4,10 +4,10 @@ A simple and custom frontend boilerplate with Gulp build systems
 
 ### Installation & Usage
 ```
-$ npm install	// install packages
-$ gulp build	// build development distribution
-$ gulp serve	// run distribution with static server
-$ gulp watch	// watch for changes
+$ yarn install	// install packages
+$ yarn start	// run distribution with static server
+$ yarn build	// build development distribution
+$ yarn watch	// watch for changes
 ```
 
 #### Gulp tasks

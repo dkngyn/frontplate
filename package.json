@@ -44,7 +44,7 @@
     "gulp-tslint": "^8.1.1",
     "gulp-uglify": "^3.0.0",
     "minimist": "^1.2.0",
-    "tsify": "^3.0.1",
+    "tsify": "^5.0.4",
     "tslint": "^5.4.2",
     "typescript": "^2.3.4",
     "uglify-es": "^3.3.9",
